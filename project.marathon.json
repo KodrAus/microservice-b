@@ -1,0 +1,27 @@
+{
+	"id": "microservice-b",
+	"cpus": 0.5,
+	"mem": 64.0,
+	"instances": 2,
+	"container": {
+		"type": "DOCKER",
+		"docker": {
+			"image": "kodraus/microserviceb:1.0.0",
+			"forcePullImage": true,
+			"network": "BRIDGE",
+			"portMappings": [
+				{ "containerPort": 8004 }
+			]
+		}
+		},
+		"healthChecks": [
+		{
+			"protocol": "HTTP",
+			"portIndex": 0,
+			"path": "/",
+			"gracePeriodSeconds": 5,
+			"intervalSeconds": 20,
+			"maxConsecutiveFailures": 3
+		}
+		]
+	}
